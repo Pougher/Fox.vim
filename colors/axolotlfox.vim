@@ -4,7 +4,7 @@ if exists("syntax_on")
 endif
 
 set background=dark
-set g:colors_name="axolotlfox"
+let g:colors_name="axolotlfox"
 
 function! GuiFor(group, ...)
      let histring = 'hi ' . a:group . ' '
