@@ -24,4 +24,4 @@ function! GuiFor(group, ...)
     execute histring
 endfunction
 
-GuiFor('Normal', '#000000', '#ffffff', 'bold')
+call GuiFor('Normal', '#000000', '#ffffff', 'bold')
