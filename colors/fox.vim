@@ -89,26 +89,33 @@ call GuiSetGroups([ 'vimHiCTerm', 'vimHiGui', 'vimHiGuiFgBg' ], fox_brightgray)
 " C syntax highlighting
 " ============================================================================
 
-call GuiSet('cString', fox_green, '')
-call GuiSet('cCustomFunc', fox_fireorange, '')
 call GuiSet('cComment', fox_lightgray, '')
 call GuiSet('cFormat', fox_brightgray, '')
-call GuiSet('cTypedef', fox_aqua, '')
-call GuiSet('cType', fox_sunset, '')
 
-call GuiSetGroups([ 'cInclude', 'cDefine' ], fox_sky)
+call GuiSetGroups([ 'cCustomFunc', 'cOperator' ], fox_fireorange)
+call GuiSetGroups([ 'cString', 'cCharacter' ], fox_green)
+call GuiSetGroups([ 'cType', 'cCustomClass' ], fox_sunset)
+call GuiSetGroups([ 'cUserLabel', 'cTypedef' ], fox_aqua)
+call GuiSetGroups([ 'cPreProc', 'cPreCondit', 'cInclude', 'cDefine' ], fox_sky)
 call GuiSetGroups([ 'cNumber', 'cOctal', 'cOctalZero' ], fox_coral)
-call GuiSetGroups([ 'cStructure', 'cConditional', 'cStatement', 'cRepeat', 'cLabel' ], fox_tulip)
+call GuiSetGroups([ 'cStorageClass',
+            \'cStructure',
+            \'cConditional',
+            \'cStatement',
+            \'cRepeat',
+            \'cLabel' ],
+            \fox_tulip)
 
 " ============================================================================
 " JavaScript syntax highlighting
 " ============================================================================
 
 call GuiSet('javaScriptNumber', fox_coral, '')
+call GuiSet('javaScriptNull', fox_sky, '')
 
 call GuiSetGroups([ 'javaScriptBraces' ], fox_whitered)
 call GuiSetGroups([ 'javaScriptFunction' ], fox_aqua)
-call GuiSetGroups([ 'javaScriptReserved', 'javaScriptException', 'javaScriptConiditional', 'javaScriptRepeat', 'javaScriptStatement' ], fox_tulip)
+call GuiSetGroups([ 'javaScriptBranch', 'javaScriptReserved', 'javaScriptException', 'javaScriptConiditional', 'javaScriptRepeat', 'javaScriptStatement' ], fox_tulip)
 call GuiSetGroups([ 'javaScriptStringS', 'javaScriptStringD' ], fox_green)
 call GuiSetGroups([ 'javaScriptIdentifier' ], fox_sunset)
 call GuiSetGroups([ 'javaScriptLineComment', 'javaScriptComment' ], fox_lightgray)
@@ -117,12 +124,62 @@ call GuiSetGroups([ 'javaScriptLineComment', 'javaScriptComment' ], fox_lightgra
 " TypeScript syntax highlighting
 " ============================================================================
 
+call GuiSetGroups([ 'typescriptNumber', 'typescriptNull', 'typescriptBoolean' ], fox_coral)
 call GuiSetGroups([ 'typescriptCall', 'typescriptBraces', 'typescriptFuncComma' ], fox_whitered)
 call GuiSetGroups([ 'typescriptComment', 'typescriptLineComment' ], fox_lightgray)
-call GuiSetGroups([ 'typescriptImport', 'typescriptExceptions', 'typescriptStatementKeyword', 'typescriptRepeat', 'typescriptConditional' ], fox_tulip)
+call GuiSetGroups([ 'typescriptImport',
+            \'typescriptExceptions',
+            \'typescriptStatementKeyword',
+            \'typescriptRepeat',
+            \'typescriptConditional',
+            \'typescriptConditionalElse',
+            \'typescriptCase',
+            \'typescriptBranch',
+            \'typescriptOperator',
+            \'typescriptInterfaceKeyword',
+            \'typescriptNodeGlobal',
+            \'typescriptClassKeyword' ],
+            \fox_tulip)
 call GuiSetGroups([ 'typescriptString' ], fox_green)
-call GuiSetGroups([ 'typescriptGlobal', 'typescriptVariable' ], fox_sunset)
-call GuiSetGroups([ 'typescriptTypeReference' ], fox_sky)
+call GuiSetGroups([ 'typescriptGlobal', 'typescriptVariable', 'typescriptInterfaceName', 'typescriptMember' ], fox_sunset)
+call GuiSetGroups([ 'typescriptTypeReference', 'typescriptIdentifier', 'typescriptAliasKeyword', 'typescriptPredefinedType' ], fox_sky)
 call GuiSetGroups([ 'typescriptFuncKeyword' ], fox_aqua)
 call GuiSetGroups([ 'typescriptFuncName' ], fox_fireorange)
+
+" ============================================================================
+" C++ syntax highlighting
+" ============================================================================
+
+call GuiSet('cppString', fox_green, '')
+call GuiSet('cppOperator', fox_fireorange, '')
+call GuiSet('cppType', fox_sunset, '')
+
+call GuiSetGroups([ 'cppExceptions',
+            \'cppStatementKeyword',
+            \'cppRepeat',
+            \'cppConditional',
+            \'cppConditionalElse',
+            \'cppCase',
+            \'cppBranch',
+            \'cppOperator',
+            \'cppInterfaceKeyword',
+            \'cppClassKeyword' ],
+            \fox_tulip)
+call GuiSetGroups([ 'cppModule',
+            \'cppStorageClass',
+            \'cppModifier',
+            \'cppCast' ],
+            \fox_aqua)
+call GuiSetGroups([ 'cppAccess',
+            \'cppStructure',
+            \'cppStatement' ],
+            \fox_sky)
+call GuiSetGroups([ 'cppConstant',
+            \'cppNumber',
+            \'cppBoolean' ],
+            \fox_coral)
+
+" ============================================================================
+" Ruby syntax highlighting
+" ============================================================================
 
