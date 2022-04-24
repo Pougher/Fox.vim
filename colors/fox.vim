@@ -49,6 +49,10 @@ function! GuiSet(group, col, style)
     call GuiFor(a:group, a:col[0], a:col[1], a:style)
 endfunction
 
+function! GuiSetN(group, col)
+    call GuiSet(a:group, a:col, '')
+endfunction
+
 function! GuiSetGroups(groups, col)
     " Function to set multiple groups at once
     for i in a:groups
@@ -56,130 +60,325 @@ function! GuiSetGroups(groups, col)
     endfor
 endfunction
 
-" General Syntax highlighting
-call GuiSet('Normal', fox_whitered, '')
-call GuiSet('LineNr', fox_grayred, '')
+" Colours: {{{
 
+call GuiSetN('FoxGreen', fox_green)
+call GuiSetN('FoxBlue', fox_sky)
+call GuiSetN('FoxYellow', fox_sunset)
+call GuiSetN('FoxOrange', fox_fireorange)
+call GuiSetN('FoxRed', fox_tulip)
+call GuiSetN('FoxPurple', fox_coral)
+call GuiSetN('FoxBright', fox_brightgray)
+call GuiSetN('FoxGray', fox_lightgray)
+call GuiSetN('FoxNormal', fox_whitered)
+call GuiSetN('FoxAqua', fox_aqua)
+call GuiSetN('FoxGrayRed', fox_grayred)
+
+" }}}
+
+" General: {{{
+hi! link Normal FoxNormal
+hi! link LineNr FoxGrayRed
+
+hi! link Comment FoxGray
+hi! link Statement FoxRed
+hi! link Type FoxYellow 
+hi! link PreProc FoxBlue
+hi! link String FoxGreen
+hi! link Function FoxAqua
+hi! link Number FoxPurple
+hi! link Constant FoxAqua
+hi! link Structure FoxAqua
+hi! link Float FoxPurple
+hi! link PreCondit FoxBlue
+hi! link Character FoxGreen
+hi! link Include FoxBlue
+hi! link Define FoxBlue
+hi! link Macro FoxBlue
+hi! link Keyword FoxRed
+hi! link Conditional FoxRed
+hi! link Repeat FoxRed
+hi! link Special FoxRed
+
+hi Normal guibg=#282828 guifg=#ebd8b0
 hi NonText guifg=bg
 hi MatchParen cterm=NONE gui=NONE guifg=lightgray guibg=gray
 
-" ============================================================================
-" VimScript syntax highlighting
-" ============================================================================
+" }}}
 
-call GuiSet('vimString', fox_green, '')
-call GuiSet('vimGroupTitle', fox_aqua, '')
-call GuiSetGroups([ 'vimHiGroup', 'vimNumber' ], fox_coral)
-call GuiSetGroups([ 'vimLineComment', 'vimComment' ], fox_lightgray)
-call GuiSetGroups([ 'vimLet', 'vimCommand', 'vimNotFunc' ], fox_tulip)
-call GuiSetGroups([ 'vimVar', 'vimOper', 'vimFuncVar' ], fox_whitered)
-call GuiSetGroups([ 'vimFuncName', 'vimUserFunc', 'vimFunction' ], fox_fireorange)
-call GuiSetGroups([ 'vimOption',
-            \'vimNotation',
-            \'vimContinue',
-            \'vimSynType',
-            \'vimHiAttrib',
-            \'vimHiGuiFgBg',
-            \'vimGroupName',
-            \'vimGroup' ],
-            \fox_sky)
-call GuiSetGroups([ 'vimHiCTerm', 'vimHiGui', 'vimHiGuiFgBg' ], fox_brightgray)
+" VimScript: {{{
 
-" ============================================================================
-" C syntax highlighting
-" ============================================================================
+hi! link vimGroupTitle FoxAqua
+hi! link vimHiGroup FoxPurple
+hi! link vimVar FoxNormal
+hi! link vimOper FoxNormal
+hi! link vimFuncVar FoxNormal
+hi! link vimFunction FoxOrange
+hi! link vimContinue FoxBlue
+hi! link vimUserFunc FoxOrange
+hi! link vimGroup FoxBlue
+hi! link vimParenSep Normal
 
-call GuiSet('cComment', fox_lightgray, '')
-call GuiSet('cFormat', fox_brightgray, '')
+" }}}
 
-call GuiSetGroups([ 'cCustomFunc', 'cOperator' ], fox_fireorange)
-call GuiSetGroups([ 'cString', 'cCharacter' ], fox_green)
-call GuiSetGroups([ 'cType', 'cCustomClass' ], fox_sunset)
-call GuiSetGroups([ 'cUserLabel', 'cTypedef' ], fox_aqua)
-call GuiSetGroups([ 'cPreProc', 'cPreCondit', 'cInclude', 'cDefine' ], fox_sky)
-call GuiSetGroups([ 'cNumber', 'cOctal', 'cOctalZero' ], fox_coral)
-call GuiSetGroups([ 'cStorageClass',
-            \'cStructure',
-            \'cConditional',
-            \'cStatement',
-            \'cRepeat',
-            \'cLabel' ],
-            \fox_tulip)
+" C: {{{
 
-" ============================================================================
-" JavaScript syntax highlighting
-" ============================================================================
+hi! link cFormat FoxBrightGray
+hi! link cCustomFunc FoxOrange
+hi! link cTypedef FoxAqua
+hi! link cStructure FoxRed
 
-call GuiSet('javaScriptNumber', fox_coral, '')
-call GuiSet('javaScriptNull', fox_sky, '')
+" }}}
 
-call GuiSetGroups([ 'javaScriptBraces' ], fox_whitered)
-call GuiSetGroups([ 'javaScriptFunction' ], fox_aqua)
-call GuiSetGroups([ 'javaScriptBranch', 'javaScriptReserved', 'javaScriptException', 'javaScriptConiditional', 'javaScriptRepeat', 'javaScriptStatement' ], fox_tulip)
-call GuiSetGroups([ 'javaScriptStringS', 'javaScriptStringD' ], fox_green)
-call GuiSetGroups([ 'javaScriptIdentifier' ], fox_sunset)
-call GuiSetGroups([ 'javaScriptLineComment', 'javaScriptComment' ], fox_lightgray)
+" JavaScript: {{{
 
-" ============================================================================
-" TypeScript syntax highlighting
-" ============================================================================
+hi! link javaScriptNull FoxPurple
+hi! link javaScriptBraces FoxNormal
+hi! link javaScriptNumber FoxPurple
+hi! link javaScriptIdentifier FoxYellow
+hi! link javaScriptMember FoxBlue
 
-call GuiSetGroups([ 'typescriptNumber', 'typescriptNull', 'typescriptBoolean' ], fox_coral)
-call GuiSetGroups([ 'typescriptCall', 'typescriptBraces', 'typescriptFuncComma' ], fox_whitered)
-call GuiSetGroups([ 'typescriptComment', 'typescriptLineComment' ], fox_lightgray)
-call GuiSetGroups([ 'typescriptImport',
-            \'typescriptExceptions',
-            \'typescriptStatementKeyword',
-            \'typescriptRepeat',
-            \'typescriptConditional',
-            \'typescriptConditionalElse',
-            \'typescriptCase',
-            \'typescriptBranch',
-            \'typescriptOperator',
-            \'typescriptInterfaceKeyword',
-            \'typescriptNodeGlobal',
-            \'typescriptClassKeyword' ],
-            \fox_tulip)
-call GuiSetGroups([ 'typescriptString' ], fox_green)
-call GuiSetGroups([ 'typescriptGlobal', 'typescriptVariable', 'typescriptInterfaceName', 'typescriptMember' ], fox_sunset)
-call GuiSetGroups([ 'typescriptTypeReference', 'typescriptIdentifier', 'typescriptAliasKeyword', 'typescriptPredefinedType' ], fox_sky)
-call GuiSetGroups([ 'typescriptFuncKeyword' ], fox_aqua)
-call GuiSetGroups([ 'typescriptFuncName' ], fox_fireorange)
+" }}}
 
-" ============================================================================
-" C++ syntax highlighting
-" ============================================================================
+" TypeScript: {{{
 
-call GuiSet('cppString', fox_green, '')
-call GuiSet('cppOperator', fox_fireorange, '')
-call GuiSet('cppType', fox_sunset, '')
+hi! link typescriptMember FoxOrange
+hi! link typescriptOperator FoxRed
+hi! link typescriptFuncComma FoxNormal
+hi! link typescriptCall FoxNormal
+hi! link typescriptBraces FoxNormal
+hi! link typescriptNull FoxPurple
+hi! link typescriptFuncName FoxOrange
+hi! link typescriptTypereference FoxBlue
+hi! " Json: {{{
 
-call GuiSetGroups([ 'cppExceptions',
-            \'cppStatementKeyword',
-            \'cppRepeat',
-            \'cppConditional',
-            \'cppConditionalElse',
-            \'cppCase',
-            \'cppBranch',
-            \'cppOperator',
-            \'cppInterfaceKeyword',
-            \'cppClassKeyword' ],
-            \fox_tulip)
-call GuiSetGroups([ 'cppModule',
-            \'cppStorageClass',
-            \'cppModifier',
-            \'cppCast' ],
-            \fox_aqua)
-call GuiSetGroups([ 'cppAccess',
-            \'cppStructure',
-            \'cppStatement' ],
-            \fox_sky)
-call GuiSetGroups([ 'cppConstant',
-            \'cppNumber',
-            \'cppBoolean' ],
-            \fox_coral)
+hi! link jsonKeyword GruvboxGreen
+hi! link jsonQuote GruvboxGreen
+hi! link jsonBraces GruvboxFg1
+hi! link jsonString GruvboxFg1
 
-" ============================================================================
-" Ruby syntax highlighting
-" ============================================================================
+" }}}link typescriptIdentifier FoxSky
+hi! link typescriptGlobal FoxYellow
+hi! link typescriptVariable FoxYellow
+hi! link typescriptInterfaceName FoxYellow
+hi! link typescriptFuncKeyword FoxAqua
 
+" }}}
+
+" C++: {{{
+" Json: {{{
+
+hi! link jsonKeyword GruvboxGreen
+hi! link jsonQuote GruvboxGreen
+hi! link jsonBraces GruvboxFg1
+hi! link jsonString GruvboxFg1
+
+" }}}
+hi! link cppAccess FoxBlue
+hi! link cppStructure FoxBlue
+hi! link cppStatement FoxBlue
+
+" }}}
+
+" Ruby: {{{
+
+hi! link rubyNil FoxPurple
+hi! link rubyOperator FoxOrange
+hi! link rubySymbol FoxOrange
+hi! link rubyMethodName FoxOrange
+hi! link rubyClassDeclaration FoxOrange
+hi! link rubyDefine FoxAqua
+hi! link rubyMethod FoxAqua
+hi! link rubyStringDelimiter FoxGreen
+hi! link rubyInstanceVariable FoxBlue
+
+" }}}
+
+" Clojure: {{{
+
+hi! link clojureKeyword FoxBlue
+hi! link clojureCond FoxOrange
+hi! link clojureSpecial FoxOrange
+hi! link clojureDefine FoxOrange
+hi! link clojureFunc FoxYellow
+hi! link clojureRepeat FoxYellow
+hi! link clojureCharacter FoxAqua
+hi! link clojureStringEscape FoxAqua
+hi! link clojureException FoxRed
+hi! link clojureRegexp FoxAqua
+hi! link clojureRegexpEscape FoxAqua
+hi! link clojureParen FoxNormal
+hi! link clojureAnonArg FoxYellow
+hi! link clojureVariable FoxBlue
+hi! link clojureMacro FoxOrange
+hi! link clojureMeta FoxYellow
+hi! link clojureDeref FoxYellow
+hi! link clojureQuote FoxYellow
+hi! link clojureUnquote FoxYellow
+
+" }}}
+
+" Python: {{{
+
+hi! link pythonBuiltin FoxPurple
+hi! link pythonBuiltinFunc FoxOrange
+hi! link pythonBuiltinObj FoxOrange
+hi! link pythonFunction FoxOrange
+hi! link pythonInclude FoxBlue
+hi! link pythonImport FoxBlue
+hi! link pythonException FoxRed
+hi! link pythonExceptions FoxRed
+hi! link pythonDecorator FoxRed
+hi! link pythonAsync FoxRed
+hi! link pythonCoding FoxAqua
+hi! link pythonQuotes FoxGreen
+hi! link pythonTripleQuote FoxGreen
+hi! link pythonRun FoxAqua
+hi! link pythonDottedName FoxAqua
+
+" }}}
+
+" Objective-C: {{{
+
+hi! link objcTypeModifier FoxAqua
+hi! link objcDirective FoxBlue
+
+" }}}
+
+" Go: {{{
+
+hi! link goImport FoxAqua
+hi! link goBuiltin FoxPurple
+hi! link goDeclaration FoxAqua
+hi! link goDeclType FoxBlue
+hi! link goConstants FoxBlue
+
+" }}}
+
+" Rust: {{{
+
+hi! link rustFuncName FoxOrange
+hi! link rustFuncCall FoxOrange
+hi! link rustOperator FoxNormal
+hi! link rustBoolean FoxPurple
+
+" }}}
+
+" Haskell: {{{
+
+hi! link hsVarSym FoxNormal
+hi! link hsStructure FoxRed
+hi! link hsPragma FoxAqua
+hi! link hsCharacter FoxGreen
+
+" }}}
+
+" Lua: {{{
+
+hi! link luaFunc FoxOrange
+hi! link luaOperator FoxNormal
+hi! link luaTable FoxNormal
+hi! link luaIn FoxBlue
+
+" }}}
+
+" C#: {{{
+
+hi! link csModifier FoxOrange
+hi! link csClass FoxRed
+hi! link csStorage FoxRed
+hi! link csUnspecifiedStatement FoxBluE
+
+" }}}
+
+" CoffeeScript: {{{
+
+hi! link coffeeExtendedOp FoxNormal
+hi! link coffeeSpecialOp FoxNormal
+hi! link coffeeParen FoxNormal
+hi! link coffeeBracket FoxNormal
+
+" }}}
+
+" Java: {{{
+
+hi! link javaScopeDecl FoxOrange
+hi! link javaParen1 FoxBright
+
+" }}}
+
+" Markdown: {{{
+
+hi! link markdownH1 FoxGreen
+hi! link markdownH2 FoxGreen
+hi! link markdownH3 FoxYellow
+hi! link markdownH4 FoxYellow
+hi! link markdownH5 FoxYellow
+hi! link markdownH6 FoxYellow
+hi! link markdownCode FoxAqua
+hi! link markdownCodeBlock FoxAqua
+hi! link markdownCodeDelimiter FoxAqua
+hi! link markdownBlockquote FoxGray
+hi! link markdownListMarker FoxGray
+hi! link markdownOrderedListMarker FoxGray
+hi! link markdownRule FoxGray
+hi! link markdownHeadingRule FoxGray
+hi! link markdownUrlDelimiter FoxNormal
+hi! link markdownLinkDelimiter FoxNormal
+hi! link markdownLinkTextDelimiter FoxNormal
+hi! link markdownHeadingDelimiter FoxOrange
+hi! link markdownUrl FoxPurple
+hi! link markdownUrlTitleDelimiter FoxGreen
+
+" }}}
+
+" HTML: {{{
+
+hi! link htmlTag FoxOrange
+hi! link htmlEndTag FoxOrange
+
+" }}}
+
+" CSS: {{{
+
+hi! link cssBraces FoxBlue
+hi! link cssFunctionName FoxYellow
+hi! link cssIdentifier FoxOrange
+hi! link cssClassName FoxGreen
+hi! link cssColor FoxBlue
+hi! link cssSelectorOp FoxBlue
+hi! link cssSelectorOp2 FoxBlue
+hi! link cssImportant FoxGreen
+hi! link cssVendor FoxNormal
+hi! link cssTextProp FoxAqua
+hi! link cssAnimationProp FoxAqua
+hi! link cssUIProp FoxYellow
+hi! link cssTransformProp FoxAqua
+hi! link cssTransitionProp FoxAqua
+hi! link cssPrintProp FoxAqua
+hi! link cssPositioningProp FoxYellow
+hi! link cssBoxProp FoxAqua
+hi! link cssFontDescriptorProp FoxAqua
+hi! link cssFlexibleBoxProp FoxAqua
+hi! link cssBorderOutlineProp FoxAqua
+hi! link cssBackgroundProp FoxAqua
+hi! link cssMarginProp FoxAqua
+hi! link cssListProp FoxAqua
+hi! link cssTableProp FoxAqua
+hi! link cssFontProp FoxAqua
+hi! link cssPaddingProp FoxAqua
+hi! link cssDimensionProp FoxAqua
+hi! link cssRenderProp FoxAqua
+hi! link cssColorProp FoxAqua
+hi! link cssGeneratedContentProp FoxAqua
+
+" }}}
+
+" JSON: {{
+
+hi! link jsonKeyword FoxGreen
+hi! link jsonQuote FoxGreen
+hi! link jsonBraces FoxNormal
+hi! link jsonString FoxNormal
+
+" }}
