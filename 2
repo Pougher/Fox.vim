@@ -1,4 +1,11 @@
-" Requires a true color (24-bit) terminal
+"" Json: {{{
+
+hi! link jsonKeyword GruvboxGreen
+hi! link jsonQuote GruvboxGreen
+hi! link jsonBraces GruvboxFg1
+hi! link jsonString GruvboxFg1
+
+" }}} Requires a true color (24-bit) terminal
 
 highlight clear
 if exists("syntax_on")
@@ -19,9 +26,6 @@ let fox_coral = [ fox_background, '#d38697' ]
 let fox_sky = [ fox_background, '#56a5b0' ]
 let fox_aqua = [ fox_background, '#5cc4ae' ]
 
-hi Pmenu guifg=#282828 guibg=#ebd8b0
-hi PmenuSel guifg=#282828 guibg=#cfbe9b gui=bold
-
 if exists("g:fox_type")
     if g:fox_type == "day"
         hi Normal guibg=#fff4d6 guifg=#282828
@@ -34,22 +38,12 @@ if exists("g:fox_type")
         let fox_aqua = [ fox_background, '#34a38b' ]
         let fox_sky = [ fox_background, '#345c99' ]
         let fox_coral = [ fox_background, '#a86782' ]
-        hi Pmenu guifg=#ebd8b0 guibg=#282828
-        hi PmenuSel guifg=#ebd8b0 guibg=#3a3a3a gui=bold
     endif
     if g:fox_type == "night"
-        hi Normal guibg=#26283a guifg=#c1c3d9
+        hi Normal guibg=#26283a guifg=#282828
         let fox_background = '#26283a'
-        let fox_sunset = [ fox_background, '#f5bf2a' ]
         let fox_whitered = [ fox_background, '#c1c3d9' ]
-        let fox_fireorange = [ fox_background, '#e0882f' ]
-        let fox_tulip = [ fox_background, '#ff4c42' ]
-        let fox_green = [ fox_background, '#a2cf29' ]
-        let fox_aqua = [ fox_background, '#5dd6e3' ]
-        let fox_sky = [ fox_background, '#5da4f5' ]
-        let fox_coral = [ fox_background, '#de78c8' ]
-        hi Pmenu guifg=#26283a guibg=#c1c3d9
-        hi PmenuSel guifg=#c1c3d9 guibg=#3b3e5c gui=bold
+        let fox_tulip = [ fox_background, '#de372f' ]
     endif
 endif
 
@@ -82,24 +76,6 @@ function! GuiFor(group, ...)
     execute histring
 endfunction
 
-function! GuiForR(group, ...)
-     let histring = 'hi ' . a:group . ' '
-
-    if strlen(a:1)
-        let histring .= 'guifg=' . a:2 . ' '
-    endif
-    
-    if strlen(a:2)
-        let histring .= 'guibg=' . a:1 . ' '
-    endif
-
-    if a:0 >= 3 && strlen(a:3)
-        let histring .= 'gui=' . a:3 . ' '
-    endif
-
-    execute histring
-endfunction
-
 function! GuiSet(group, col, style)
     " Function to set the colour of one group
     call GuiFor(a:group, a:col[0], a:col[1], a:style)
@@ -114,11 +90,6 @@ function! GuiSetGroups(groups, col)
     for i in a:groups
         call GuiSet(i, a:col, '')
     endfor
-endfunction
-
-function! GuiSetNoBKG(group, col)
-    " Function to set the colour of one group without a background colour
-    call GuiForR(a:group, a:col[1])
 endfunction
 
 " }}}
@@ -136,18 +107,6 @@ call GuiSetN('FoxGray', fox_lightgray)
 call GuiSetN('FoxNormal', fox_whitered)
 call GuiSetN('FoxAqua', fox_aqua)
 call GuiSetN('FoxGrayRed', fox_grayred)
-
-call GuiSetN('FoxGreenBKG', fox_green)
-call GuiSetN('FoxBlueBKG', fox_sky)
-call GuiSetN('FoxYellowBKG', fox_sunset)
-call GuiSetN('FoxOrangeBKG', fox_fireorange)
-call GuiSetN('FoxRedBKG', fox_tulip)
-call GuiSetN('FoxPurpleBKG', fox_coral)
-call GuiSetN('FoxBrightBKG', fox_brightgray)
-call GuiSetN('FoxGrayBKG', fox_lightgray)
-call GuiSetN('FoxNormalBKG', fox_whitered)
-call GuiSetN('FoxAquaBKG', fox_aqua)
-call GuiSetN('FoxGrayRedBKG', fox_grayred)
 
 " }}}
 
@@ -440,21 +399,5 @@ hi! link jsonKeyword FoxGreen
 hi! link jsonQuote FoxGreen
 hi! link jsonBraces FoxNormal
 hi! link jsonString FoxNormal
-
-" }}}
-
-" NERDTree: {{{
-
-hi! link NERDTreeDir FoxAquaBKG
-hi! link NERDTreeDirSlash FoxAquaBKG
-hi! link NERDTreeOpenable FoxOrangeBKG
-hi! link NERDTreeClosable FoxOrangeBKG
-hi! link NERDTreeFile FoxNormalBKG
-hi! link NERDTreeExecFile FoxYellowBKG
-hi! link NERDTreeUp FoxGrayBKG
-hi! link NERDTreeCWD FoxGreenBKG
-hi! link NERDTreeHelp FoxNormalBKG
-hi! link NERDTreeToggleOn FoxGreenBKG
-hi! link NERDTreeToggleOff FoxRedBKG
 
 " }}}
