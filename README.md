@@ -14,3 +14,7 @@ plug 'AxolotlC/Fox.vim'
 ```
 Plugin 'AxolotlC/Fox.vim'
 ```
+
+---
+## Gallery
+
