@@ -19,3 +19,8 @@ Plugin 'AxolotlC/Fox.vim'
 ## Gallery
 #### Fox Regular
 ![Fox Regular](gallery/fox-regular.png)
+#### Fox Day
+![Fox Day](gallery/fox-day.png)
+#### Fox Night
+![Fox Night](gallery/fox-night.png)
+
