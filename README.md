@@ -15,6 +15,13 @@ plug 'AxolotlC/Fox.vim'
 Plugin 'AxolotlC/Fox.vim'
 ```
 
+## Usage
+To enable the theme, simply put `colorscheme fox` in your `.vimrc` or equivalent. In order to change the style of
+the theme, use `let g:fox_type='<name>'` where name is the name of your scheme type.
+
+For example, to use the Fox Night theme, you would put `let g:fox_type='night'` in your `.vimrc` before calling
+`:colorscheme`.
+
 ---
 ## Gallery
 #### Fox Regular
