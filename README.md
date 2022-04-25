@@ -17,4 +17,5 @@ Plugin 'AxolotlC/Fox.vim'
 
 ---
 ## Gallery
-
+#### Fox Regular
+![Fox Regular](gallery/fox-regular.png)
